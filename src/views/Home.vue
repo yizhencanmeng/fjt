@@ -1,29 +1,36 @@
 <template>
   <div class="home">
-   <div class="box"></div>
-   <van-button type="primary">主要按钮</van-button>
-<van-button type="info">信息按钮</van-button>
-<van-button type="default">默认按钮</van-button>
-<van-button type="warning">警告按钮</van-button>
-<van-button type="danger">危险按钮</van-button>
+    <router-view></router-view>
+    <div class="home-footer">
+      <router-link to="/index">首页</router-link>
+      <router-link to="/class">课程</router-link>
+      <router-link to="/zixun">资讯</router-link>
+      <router-link to="/books">图书</router-link>
+      <router-link to="/my">我的</router-link>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
 </script>
 <style>
-.box{
+.home{
+  width: 100%;
+  height: 100%;
+}
+.home-footer{
   width: 375px;
-  height: 100px;
-  background: red
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.home-footer a{
+  width: 75px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 18px;
+  text-decoration: #fff;
+  display: inline-block;
 }
 </style>

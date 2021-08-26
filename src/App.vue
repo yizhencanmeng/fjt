@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style scopend>
 *{
   margin: 0;
   padding: 0;

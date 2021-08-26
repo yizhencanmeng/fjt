@@ -1,0 +1,122 @@
+<template>
+    <div class="login">
+        <div class="login-top">
+            <img src="/img/02.jpg" alt="">
+        </div>
+        <div class="fen"></div>
+        <div class="home-con">
+            <div class="home-con-phone">
+                <input type="text" placeholder="请输入手机号">
+                <span>获取验证码</span>
+            </div>
+            <div class="home-con-duan">
+                <input type="text" placeholder="请输入短信验证码">
+            </div>
+            <div class="home-con-wei">
+                <span>*未注册的手机号将自动注册</span>
+                <span>使用密码登录</span>
+            </div>
+            <div class="home-con-login">
+                <p class="home-con-login-p">登 录</p>
+                <p class="home-con-login-xieyi">
+                    <img src="/img/05.png" alt="">
+                    我同意<span>用户注册协议</span>和<span>隐私保护协议</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+.login{
+    width: 375px;
+    height: auto;
+}
+.login-top{
+    margin-top: 10px;
+    width: 375px;
+    height: 255px;
+}
+.login-top img{
+    width: 100%;
+    height: 100%;
+}
+.fen{
+    margin-top: 20px;
+    width: 375px;
+    height: 20px;
+    background: rgb(221, 220, 220);
+}
+.home-con{
+    width: 375px;
+    height: 130px;
+}
+.home-con-phone{
+    width: 300px;
+    line-height: 50px;
+    background: #fff;
+    border-bottom: 1px solid #f1f1f1;
+    margin-left: 30px;
+    margin-top: 50px;
+}
+.home-con-phone input{
+    border: 0;
+    font-size: 15px;
+}
+.home-con-phone span{
+    display: inline-block;
+    margin-right: 0;
+    margin-left: 40px;
+    color: #f00;
+}
+.home-con-duan{
+    width: 300px;
+    line-height: 50px;
+    background: #fff;
+    border-bottom: 1px solid #f1f1f1;
+    margin-left: 30px;
+}
+.home-con-duan input{
+    border: 0;
+    font-size: 15px;
+}
+.home-con-wei{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30px;
+    margin-top: 10px;
+    color: #b7b7b7;
+}
+.home-con-login{
+    width: 375px;
+    height: 187px;
+    background-image: url('/img/03.png');
+    background-size: 100%;
+}
+.home-con-login-p{
+    padding-left: 165px;
+    padding-top: 70px;
+    font-size: 14px;
+    color: #fff;
+}
+.home-con-login-xieyi{
+    width: 300px;
+    line-height: 20px;
+    margin-left: 40px;
+    margin-top: 30px;
+}
+.home-con-login-xieyi img{
+    width: 15px;
+    height: 15px;
+}
+.home-con-login-xieyi span{
+    color: #f00;
+}
+</style>

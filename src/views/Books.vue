@@ -1,13 +1,15 @@
 <template>
-    <div class="login">
-        登录页面
+    <div>
+        图书
     </div>
 </template>
+
 <script>
 export default {
-    
+
 }
 </script>
+
 <style>
 
 </style>
