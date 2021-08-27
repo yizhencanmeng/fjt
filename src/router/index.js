@@ -35,6 +35,10 @@ const routes = [
         name: 'Zixun',
         component:()=>import('@/views/Zixun')
       },
+      {
+        path:'/',
+        redirect:'/index'
+      }
     ]
   },
   {

@@ -6,18 +6,18 @@
         <div class="fen"></div>
         <div class="home-con">
             <div class="home-con-phone">
-                <input type="text" placeholder="请输入手机号">
-                <span>获取验证码</span>
+                <input type="text" placeholder="请输入手机号" v-model="value">
+                <span @click="huoqu">获取验证码</span>
             </div>
             <div class="home-con-duan">
-                <input type="text" placeholder="请输入短信验证码">
+                <input type="text" placeholder="请输入短信验证码" v-model="password">
             </div>
             <div class="home-con-wei">
                 <span>*未注册的手机号将自动注册</span>
                 <span>使用密码登录</span>
             </div>
             <div class="home-con-login">
-                <p class="home-con-login-p">登 录</p>
+                <p class="home-con-login-p" @click="login">登 录</p>
                 <p class="home-con-login-xieyi">
                     <img src="/img/05.png" alt="">
                     我同意<span>用户注册协议</span>和<span>隐私保护协议</span>
@@ -28,8 +28,35 @@
 </template>
 
 <script>
+import {smsCode,login} from '@/http/api'
 export default {
-
+    data() {
+        return {
+            value:"",
+            password:""
+        }
+    },
+    created() {
+    },
+    methods: {
+        async huoqu(){
+            var phoneReg = /^[1]([3-9])[0-9]{9}$/
+            if(!phoneReg.test(this.value)){
+                return this.$toast({
+                    message:'手机号格式不正确'
+                })
+            }else{
+                var obj = {mobile:this.value,sms_type:'login'}
+                let res = await smsCode(obj)
+                console.log(res);
+            }
+        },
+        async login(){
+            var obj = {mobile:this.value,password:this.password}
+            let res = await login(obj)
+            console.log(res);
+        }
+    },
 }
 </script>
 
