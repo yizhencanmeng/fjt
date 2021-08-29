@@ -17,7 +17,7 @@
             <div class="index-con-list">
                 <ul>
                     <li>
-                        <p><img src="/img/09.png" alt=""></p>
+                        <p><img src="/img/09.jpg" alt=""></p>
                         <span>大威天龙</span>
                     </li>
                 </ul>
@@ -95,7 +95,7 @@ import {banner,recommend} from '@/http/api'
 export default {
     data() {
         return {
-            imglist:['03.jpg','04.jpg'],
+            imglist:['3.jpg','4.jpg'],
             recommendlist:[]
         }
     },

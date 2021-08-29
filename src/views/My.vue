@@ -1,7 +1,7 @@
 <template>
     <div class="my" @click="login">
         <div class="my-top">
-            <p class="my-top-img"><img src="/img/02.png" alt=""></p>
+            <p class="my-top-img"><img src="/img/2.jpg" alt=""></p>
             <p class="my-top-p">登录/注册</p>
         </div>
     </div>
