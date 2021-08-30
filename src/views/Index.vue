@@ -61,7 +61,7 @@
             </div>
             <div class="index-zishen-con">
                 <div class="index-zishen-con-box" v-for="(item,key) in recommendlist[1].list" :key="key">
-                    <div class="index-zishen-con-box-img"><img :src="'/img/'+item.cover_img" alt=""></div>
+                    <div class="index-zishen-con-box-img"><img class="index-zishen-con-box-img-img" :src="'/img/'+item.cover_img" alt=""></div>
                     <div class="index-zishen-con-box-p">
                         <p class="index-zishen-con-box-p-one">{{item.title}}</p>
                         <p class="index-zishen-con-box-p-two">{{item.sales_num}}人已报名</p>
@@ -82,7 +82,7 @@
             </div>
             <div class="index-zishen-con">
                 <div class="index-zishen-con-box" v-for="(item,key) in recommendlist[2].list" :key="key">
-                    <div class="index-zishen-con-box-img"><img :src="'/img/'+item.teacher_avatar" alt=""></div>
+                    <div class="index-zishen-con-box-img"><img class="index-zishen-con-box-img-img" :src="'/img/'+item.teacher_avatar" alt=""></div>
                     <div class="index-zishen-con-box-p">
                         <p class="index-zishen-con-box-p-one">{{item.teacher_name}}</p>
                         <p class="index-zishen-con-box-p-two">{{item.introduction}}</p>

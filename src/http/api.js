@@ -11,7 +11,7 @@ export function smsCode(arg){
 
 export function login(arg){
     return service({
-        url:request_url.login,
+        url:'/login',
         data:arg,
         method:'post'
     })
@@ -22,6 +22,13 @@ export function tabbar(arg){
         url:request_url.tabbar,
         data:arg,
         method:'get'
+    })
+}
+export function password(arg){
+    return service({
+        url:'/password',
+        data:arg,
+        method:'post'
     })
 }
 

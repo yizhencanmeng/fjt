@@ -1,8 +1,14 @@
 <template>
     <div class="my" >
         <div class="my-top">
-            <p class="my-top-img"><img class="my-top-img-img" src="/img/02.png" alt=""></p>
-            <p class="my-top-p" @click="login">登录/注册</p>
+            <div v-show="$store.state.token==''">
+                <p class="my-top-img"><img class="my-top-img-img" src="/img/02.png" alt=""></p>
+                <p class="my-top-p" @click="login">登录/注册</p>
+            </div>
+            <div v-show="$store.state.token!=''">
+                <p class="my-top-img"><img class="my-top-img-img" src="/img/02.png" alt=""></p>
+                <p class="my-top-p">{{$store.state.zhang}}</p>
+            </div>
             <div class="my-top-xue">
                 <ul class="my-top-xue-ul">
                     <li class="my-top-xue-ul-li">
@@ -93,20 +99,36 @@
                     <span class="my-wo-ul-li-i">意见反馈</span>
                     <span class="my-wo-ul-li-im">></span>
                 </li>
-                 <li class="my-wo-ul-li">
+                 <li class="my-wo-ul-li" @click="zhao">
                     <span><img  class="my-wo-ul-li-img" src="/img/25.png" alt=""></span>
                     <span class="my-wo-ul-li-i">设置</span>
                     <span class="my-wo-ul-li-im">></span>
                 </li>
             </ul>
         </div>
+        <div class="my-hui2"></div>
+        
+       
+
     </div>
 </template>
 <script>
 export default {
+    data(){
+        return{ 
+            
+        }
+    },
   methods: {
     login() {
       this.$router.push("/login");
+    },
+    zhao(){
+        if(this.$store.state.token==''){
+            this.$router.push('/Login')
+        }else{
+            this.$router.push('/she')
+        }
     }
   }
 };
@@ -186,6 +208,7 @@ export default {
             margin-top: 1px;
             align-content: center;
             line-height: 56px;
+            position: relative;
             .my-wo-ul-li-img{
                 width: 15px;
                 height: 14px;
@@ -196,9 +219,16 @@ export default {
             }
             .my-wo-ul-li-im{
               font-size: 20px;
-               margin-left: 260px;
+               position: absolute;
+                top: 0;
+                right: 20px;
             }
         }
     }
+}
+.my-hui2{
+width: 100%;
+height: 80px;
+background: #d3d0d0;
 }
 </style>

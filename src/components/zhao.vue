@@ -1,69 +1,46 @@
-
 <template>
-    <div class="login">
-        <div class="login-top">
-            <img class="login-top-img" src="/img/2.jpg" alt="">
-        </div>
-        <div class="fen"></div>
-        <div class="login-con">
+   <div class="login-con">
             <div class="login-con-phone">
                 <input class="login-con-phone-input" type="text" placeholder="请输入手机号" v-model="value">
-                <span class="login-con-phone-span" @click="huoqu" v-show="!show">{{txt}}</span>
+                <span class="login-con-phone-span" @click="yan" >{{txt}}</span>
             </div>
-            <div class="login-con-duan" v-show="!show">
+            <div class="login-con-duan" >
                 <input class="login-con-duan-input" type="text" placeholder="请输入短信验证码" v-model="sms_code">
             </div>
-            <div class="login-con-duan" v-show="show">
+            <div class="login-con-duan">
                 <input class="login-con-duan-input" type="text" placeholder="请输入密码" v-model="password">
             </div>
-            <div class="login-con-wei">
-                <span v-show="!show">*未注册的手机号将自动注册</span>
-                <span v-show="show" @click="zhao">找回密码</span>
-                <span @click="show=true" v-show="!show">使用密码登录</span>
-                <span @click="show=false" v-show="show">注册/验证码登录</span>
-            </div>
             <div class="login-con-login">
-                <p class="login-con-login-p" v-show="!show" @click="login">登 录</p>
-                <p class="login-con-login-p" v-show="show" @click="logini">登 录</p>
-                <p class="login-con-login-xieyi">
-                    <img class="login-con-login-xieyi-img" src="/img/05.png" alt="">
-                    我同意<span class="login-con-login-xieyi-span">用户注册协议</span>
-                    和<span class="login-con-login-xieyi-span">隐私保护协议</span>
-                </p>
+                <p class="login-con-login-p" @click="login">登 录</p>
             </div>
         </div>
-    </div>
 </template>
-
 <script>
-import { smsCode, login } from "@/http/api";
+import { smsCode, login,password } from "@/http/api";
+
 export default {
   data() {
     return {
       txt: "获取验证码",
       value: "",
-      sms_code: "",
       password: "",
-      show:false
+      sms_code: ""
     };
   },
-  created() {},
   methods: {
-    // 获取验证
-    async huoqu() {
+    async yan() {
       var phoneReg = /^[1]([3-9])[0-9]{9}$/;
       if (!phoneReg.test(this.value)) {
         return this.$toast({
           message: "手机号格式不正确"
         });
       } else {
-        var obj = { mobile: this.value, sms_type: "login" };
+        var obj = { mobile: this.value, sms_type: "getPassword" };
         let res = await smsCode(obj);
         console.log(res);
       }
       this.getSecond(60);
     },
-    // 时间
     getSecond(wait) {
       let _this = this;
       let _wait = wait;
@@ -80,40 +57,18 @@ export default {
         }, 1000);
       }
     },
-    // 登录短信
     async login() {
-      if(this.value=="" && this.sms_code==""){
+      if(this.value=="" && this.sms_code=="" && this.password==""){
         alert("内容不能为空")
         return false
       }
-      let res = await login({ mobile: this.value, sms_code: this.sms_code , client:"1",	type:2,});
+      let res = await password({ mobile: this.value,password:this.password ,sms_code:this.sms_code});
       console.log(res);
-      if(res.data.code==200){
-        this.$router.push("/My")
-      }
+      
     },
-    // 登录密码
-     async logini() {
-      if(this.value=="" && this.sms_code==""){
-        alert("内容不能为空")
-        return false
-      }
-      let res = await login({ mobile: this.value,password:this.password , client:"1",	type:1,});
-      console.log(res);
-        if(res.status==200){
-          this.$router.push('/My')
-        }
-        this.$store.commit("token",res.data.data.remember_token)
-        this.$store.commit("zhang",res.data.data.mobile)
-    },
-
-    zhao(){
-      this.$router.push("/zhao")
-    }
   }
 };
 </script>
-
 <style lang="scss">
 .login {
   width: 375px;
@@ -186,19 +141,9 @@ export default {
       font-size: 14px;
       color: #fff;
     }
-    .login-con-login-xieyi {
-      width: 300px;
-      line-height: 20px;
-      margin-left: 40px;
-      margin-top: 30px;
-      .login-con-login-xieyi-img {
-        width: 15px;
-        height: 15px;
-      }
-      .login-con-login-xieyi-span {
-        color: #f00;
-      }
-    }
   }
 }
 </style>
+
+
+

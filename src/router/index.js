@@ -46,6 +46,21 @@ const routes = [
     name: 'Login',
     component:()=>import('@/components/Login')
   },
+  {
+    path: '/zhao',
+    name: 'zhao',
+    component:()=>import('@/components/zhao')
+  },
+  {
+    path: '/she',
+    name: 'she',
+    component:()=>import('@/components/she')
+  },
+  {
+    path: '/zhu',
+    name: 'zhu',
+    component:()=>import('@/components/zhu')
+  },
 ]
 
 const router = new VueRouter({
