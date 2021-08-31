@@ -61,6 +61,11 @@ const routes = [
     name: 'zhu',
     component:()=>import('@/components/zhu')
   },
+  {
+    path: '/sign',
+    name: 'Sign',
+    component:()=>import('@/components/Sign')
+  },
 ]
 
 const router = new VueRouter({

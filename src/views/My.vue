@@ -8,6 +8,7 @@
             <div v-show="$store.state.token!=''">
                 <p class="my-top-img"><img class="my-top-img-img" src="/img/02.png" alt=""></p>
                 <p class="my-top-p">{{$store.state.zhang}}</p>
+                <p class="my-top-qiandao" @click="qian">签到</p>
             </div>
             <div class="my-top-xue">
                 <ul class="my-top-xue-ul">
@@ -129,6 +130,9 @@ export default {
         }else{
             this.$router.push('/she')
         }
+    },
+    qian(){
+        this.$router.push('/sign')
     }
   }
 };
@@ -145,6 +149,17 @@ export default {
   background-repeat: no-repeat;
   background-size: 100%;
   text-align: center;
+  position: relative;
+  .my-top-qiandao{
+      width: 68px;
+      line-height: 25px;
+      background: linear-gradient(270deg,#6dbcff,#4e7de3);
+      color: #fff;
+      border-radius: 12px 0 0 12px;
+      position: absolute;
+      top: 30%;
+      right: 0;
+  }
   .my-top-img {
     width: 60px;
     height: 60px;
