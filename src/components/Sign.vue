@@ -12,7 +12,7 @@
         </div>
         <!-- 日历 -->
         <div class="sign-rili">
-            <van-calendar title="日历" :poppable="false" :show-confirm="false" :style="{ height: '335px' }"/>
+            <van-calendar title="日历" :poppable="false" :show-confirm="false" :style="{ height: '335px' }" v-model="value" @click="li"/>
         </div>
         <!-- 好课推荐 -->
         <div class="sign-tui">
@@ -45,13 +45,19 @@
 </template>
 
 <script>
+import {integral} from '@/http/api'
 export default {
   data() {
     return {
-        
+        value:''
     };
   },
+  created() {
+  },
   methods: {
+      li(){
+          console.log(this.value);
+      }
   },
 };
 </script>

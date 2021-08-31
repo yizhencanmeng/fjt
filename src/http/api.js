@@ -47,3 +47,19 @@ export function recommend(arg){
         method:'get'
     })
 }
+
+export function integral(arg){
+    return service({
+        url:request_url.integral,
+        data:arg,
+        method:'get'
+    })
+}
+
+export function courseInfo(arg){
+    return service({
+        url:request_url.courseInfo,
+        data:arg,
+        method:'get'
+    })
+}
