@@ -12,7 +12,8 @@
         </div>
         <!-- 日历 -->
         <div class="sign-rili">
-            <van-calendar title="日历" :poppable="false" :show-confirm="false" :style="{ height: '335px' }" v-model="value" @click="li"/>
+            <van-calendar v-model="show" :poppable="false" :show-mark="false" row-height='45' :formatter="formatDate"
+            :show-title="false" :show-confirm="false" :readonly="true" @confirm="onConfirm" />
         </div>
         <!-- 好课推荐 -->
         <div class="sign-tui">
@@ -49,15 +50,38 @@ import {integral} from '@/http/api'
 export default {
   data() {
     return {
-        value:''
+        date: '',
+        show: true,
     };
   },
   created() {
   },
+  async mounted(){
+      const tady = new Date()
+      const year = tady.getFullYear()
+      const month_new = tady.getMonth()+1
+      const date_new = tady.getDate()
+      let res = await integral({date:`${year}-${month_new}-${date_new}`})
+      console.log(res);
+  },
   methods: {
-      li(){
-          console.log(this.value);
-      }
+    formatDate(day) {
+        const month = day.date.getMonth() +1
+        const date = day.date.getDate()
+
+        const tady = new Date()
+        const year = tady.getFullYear()
+        const month_new = tady.getMonth()+1
+        const date_new = tady.getDate()
+        if(month == month_new && date == date_new){
+            day.bottomInfo = '+1'
+            day.text = '√'
+        }
+        return day
+    },
+    onConfirm(date) {
+      this.date = this.formatDate(date);
+    },
   },
 };
 </script>
@@ -115,10 +139,10 @@ export default {
         }
     }
     .sign-rili{
-        width: 337px;
-        height: 335px;
-        margin-left: 19px;
-        margin-right: 19px;
+        width: 320px;
+        height: 300px;
+        margin-left: 25px;
+        margin-right: 25px;
         margin-bottom: 25px;
         .van-calendar{
             border-radius: 12px;
@@ -129,6 +153,7 @@ export default {
         width: 375px;
         height: 135px;
         padding: 0 15px;
+        box-sizing: border-box;
         margin-bottom: 25px;
         .sign-tui-top{
             width: 345px;
@@ -172,5 +197,15 @@ export default {
             width: 345px;
         }
     }
+}
+.van-calendar__selected-day{
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 15px;
+    line-height: 30px;
+}
+.van-calendar__bottom-info{
+    bottom: -6px;
+    color: #e60012;
 }
 </style>

@@ -1,12 +1,12 @@
 <template>
     <div class="class">
         <div class="index-zishen-con">
-            <div class="index-zishen-con-box" v-for="(item,key) in classes" :key="key">
+            <div class="index-zishen-con-box" v-for="item in tearchers" :key="item.id" @click="tear(item.id)">
                 <div class="index-zishen-con-box-img">
-                    <img class="index-zishen-con-box-img-img" :src="'/img/'+item.teacher_avatar">
+                    <img class="index-zishen-con-box-img-img" :src="'/img/'+item.avatar">
                 </div>
                 <div class="index-zishen-con-box-p">
-                    <p class="index-zishen-con-box-p-one">{{item.teacher_name}}</p>
+                    <p class="index-zishen-con-box-p-one">{{item.real_name}}</p>
                     <p class="index-zishen-con-box-p-two">{{item.introduction}}</p>
                 </div>
             </div>
@@ -15,21 +15,32 @@
 </template>
 
 <script>
-import { recommend } from "@/http/api";
+import { tearchers } from "@/http/api";
 export default {
-    data() {
-        return {
-            classes:[]
+  data() {
+    return {
+        tearchers:[]
+    }
+  },
+  async created() {
+    let {data: { data: {list:res} }} = await tearchers();
+    this.tearchers = res
+    var imgs = ["10.png","11.png","12.jpeg","13.png","15.png","16.png"];
+    this.tearchers.forEach((item,id) =>{
+      item.avatar = imgs[id]
+    })
+    // console.log(this.tearchers);
+  },
+  methods: {
+    tear(id){
+      this.$router.push({
+        path:"/classx",
+        query:{
+          id:id
         }
-    },
-    async created() {
-        let {data: { data: res }} = await recommend();
-        this.classes = res[2].list
-        var imgs = ["10.png","11.png","12.jpeg","13.png","15.png","16.png"];
-        this.classes.forEach((item,id) =>{
-            item.teacher_avatar = imgs[id]
-        })
-    },
+      })
+    }
+  },
 };
 </script>
 

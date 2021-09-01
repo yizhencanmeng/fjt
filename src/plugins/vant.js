@@ -7,7 +7,10 @@ import {
     Swipe, 
     SwipeItem,
     Calendar,
-    Card
+    Card,
+    Tab, 
+    Tabs,
+
 } from 'vant'
 
 
@@ -17,3 +20,5 @@ Vue.use(Swipe)
 Vue.use(SwipeItem)
 Vue.use(Calendar)
 Vue.use(Card)
+Vue.use(Tab)
+Vue.use(Tabs)

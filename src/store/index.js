@@ -3,12 +3,13 @@ import Vuex from 'vuex'
 import persistedState from 'vuex-persistedstate'
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
-    token:"",
+
+const store = new Vuex.Store({
+  state:{
+    token:'',
     zhang:""
   },
-  mutations: {
+  mutations:{
     token(state,arg){
       state.token=arg
     },
@@ -19,11 +20,11 @@ export default new Vuex.Store({
       state.token=""
     }
   },
-  actions: {
-  },
-  modules: {
-  },
+  actions:{},
+  modules:{},
   plugins: [
     persistedState({ storage: window.sessionStorage })
 ]
 })
+
+export default store

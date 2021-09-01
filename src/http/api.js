@@ -32,10 +32,10 @@ export function password(arg){
     })
 }
 
-export function banner(arg){
+export function banner(){
     return service({
         url:request_url.banner,
-        data:arg,
+        data:{},
         method:'get'
     })
 }
@@ -56,10 +56,27 @@ export function integral(arg){
     })
 }
 
-export function courseInfo(arg){
+export function tearchers(arg){
     return service({
-        url:request_url.courseInfo,
+        url:request_url.tearchers,
         data:arg,
         method:'get'
+    })
+}
+
+
+export function tearchersinfo(arg){
+    return service({
+        url:request_url.tearchersinfo,
+        data:arg,
+        method:'get'
+    })
+}
+
+export function mainCourse(arg){
+    return service({
+        url:request_url.mainCourse,
+        data:{arg},
+        method:'post'
     })
 }

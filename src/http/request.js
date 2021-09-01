@@ -4,6 +4,8 @@ module.exports = {
     tabbar:'/nav/bottom',
     banner:'/banner',
     recommend:'/recommend/appIndex',
-    integral:'/integral/signRecord?date=2021-8-31&',
-    courseInfo:'/courseInfo/basis_id=121'
+    integral:'/user/integral/signRecord',
+    tearchers:'/teacher/search/attrs?page=1&limit=10&',
+    tearchersinfo:'/teacher/',
+    mainCourse:'/teacher/mainCourse'
 }
