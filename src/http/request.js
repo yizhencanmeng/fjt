@@ -7,5 +7,6 @@ module.exports = {
     integral:'/user/integral/signRecord',
     tearchers:'/teacher/search/attrs?page=1&limit=10&',
     tearchersinfo:'/teacher/',
-    mainCourse:'/teacher/mainCourse'
+    mainCourse:'/teacher/mainCourse',
+    infomation:'/information/detail'
 }

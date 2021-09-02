@@ -80,3 +80,11 @@ export function mainCourse(arg){
         method:'post'
     })
 }
+
+export function infomation(arg){
+    return service({
+        url:request_url.infomation,
+        data:{arg},
+        method:'post'
+    })
+}

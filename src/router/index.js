@@ -76,6 +76,11 @@ const routes = [
     name: 'Cxiang',
     component:()=>import('@/components/Cxiang')
   },
+  {
+    path: '/zixiang',
+    name: 'zixiang',
+    component:()=>import('@/components/zixiang')
+  },
 ]
 
 const router = new VueRouter({

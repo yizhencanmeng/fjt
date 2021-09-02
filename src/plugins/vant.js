@@ -10,7 +10,8 @@ import {
     Card,
     Tab, 
     Tabs,
-
+    ActionSheet,
+    Icon
 } from 'vant'
 
 
@@ -22,3 +23,5 @@ Vue.use(Calendar)
 Vue.use(Card)
 Vue.use(Tab)
 Vue.use(Tabs)
+Vue.use(ActionSheet)
+Vue.use(Icon)

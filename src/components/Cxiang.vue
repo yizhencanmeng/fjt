@@ -20,11 +20,18 @@
                 <span class="cxiang-youhui-top-two">领取优惠券最多可减<span class="cxiang-youhui-top-two-span">80</span></span>
                 <span class="cxiang-youhui-top-three">领取 ></span>
             </div>
-            <div class="cxiang-youhui-top">
+            <div class="cxiang-youhui-top" @click="fuwu">
                 <span class="cxiang-youhui-top-one">服务：</span>
                 <span class="cxiang-youhui-top-two">课程售后</span>
                 <span class="cxiang-youhui-top-three">详情 ></span>
             </div>
+            <!-- 遮罩层 -->
+            <van-action-sheet v-model="show" title="课程服务">
+                <div class="content">
+                    <p>{{course.name}}</p>
+                    <p>{{course.description}}</p>
+                </div>
+            </van-action-sheet>
         </div>
         <div class="cxiang-item">
             <p class="cxiang-item-p">教学团队</p>
@@ -80,7 +87,9 @@ export default {
             courseinfo:[],
             teachers:[],
             active:0,
-            kecheng:['课程介绍','课程大纲','课程评价']
+            kecheng:['课程介绍','课程大纲','课程评价'],
+            show:false,
+            course:[]
         }
     },
     created() {
@@ -91,19 +100,31 @@ export default {
     methods: {
         async getcourseinfo(){
             let {data:{data:{info:res}}} = await this.$http.get('http://120.53.31.103:84/api/app/courseInfo/basis_id='+this.id)
-            // console.log(res);
+            console.log(res);
             this.courseinfo = res
+            this.course = res.service[0]
         },
         async getteachers(){
             let {data:{data:{teachers:res}}} = await this.$http.get('http://120.53.31.103:84/api/app/courseInfo/basis_id='+this.id)
-            console.log(res);
+            // console.log(res);
             this.teachers = res
+        },
+        fuwu(){
+            this.show = true
         }
     },
 }
 </script>
 
 <style lang="scss">
+.van-action-sheet{
+    width: 375px;
+    box-sizing: border-box;
+}
+.content {
+    box-sizing: border-box;
+    padding: 16px 16px 200px;
+}
 .fen{
     width: 375px;
     height: 3px;
